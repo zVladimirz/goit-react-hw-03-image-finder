@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { HiArchive, HiArrowCircleUp, HiBriefcase } from 'react-icons/hi';
-import { Button } from 'components/Button';
-import { Box } from 'components/Box';
-import { AppBar } from '../AppBar';
+import { Button } from './Button';
+import { Box } from './Box';
+import { AppBar } from './AppBar';
 
 import { Component } from 'react';
 import { Audio } from 'react-loader-spinner';
@@ -10,7 +10,6 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { FcSearch } from 'react-icons/fc';
 import IconButton from './components/IconButton';
 import { ReactComponent as AddIcon } from '../icons/add.svg';
-import Modal from '../Modal'
 
 const Text = styled.p`
   color: ${p => p.theme.colors.accent};
@@ -21,7 +20,6 @@ const Text = styled.p`
 `;
 
 class App extends Component {
-
   state = {
     showModal: false,
   };
@@ -30,16 +28,16 @@ class App extends Component {
     this.setState(({ showModal }) => ({
       showModal: !showModal,
     }));
-  };  
+  };
   render() {
     return (
       <Box position="relative" as="main">
-        <IconButton onClick={this.toggleModal} aria-label="Р”РѕР±Р°РІРёС‚СЊ todo">
+        <IconButton onClick={toggleModal} aria-label="Р”РѕР±Р°РІРёС‚СЊ todo">
           <AddIcon width="40" height="40" fill="#fff" />
         </IconButton>
 
         {showModal && (
-          <Modal onClose={this.toggleModal}>
+          <Modal onClose={toggleModal}>
             {/* <TodoEditor onSubmit={this.addTodo} /> */}
           </Modal>
         )}
@@ -69,8 +67,6 @@ class App extends Component {
           <Button type="submit">LogIn</Button>
         </Box>
       </Box>
-);
+    );
   }
 }
-
-export default App;
