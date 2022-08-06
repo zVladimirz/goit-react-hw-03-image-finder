@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { HiArchive, HiArrowCircleUp, HiBriefcase } from 'react-icons/hi';
 import  Button  from 'components/Button';
 import  Box  from 'components/Box';
-import  AppBar  from '../AppBar';
+import  AppBar  from 'components/AppBar';
 
 import { Component } from 'react';
 import { Audio } from 'react-loader-spinner';

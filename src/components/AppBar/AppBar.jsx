@@ -1,5 +1,5 @@
-import { Box } from 'components/Box';
-import { Logo } from 'components/Logo';
+import  Box  from 'components/Box';
+import Logo  from 'components/Logo';
 
 const AppBar = () => {
   return (
