@@ -8,8 +8,8 @@ import { Component } from 'react';
 import { Audio } from 'react-loader-spinner';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FcSearch } from 'react-icons/fc';
-import IconButton from './components/IconButton';
-import { ReactComponent as AddIcon } from '../icons/add.svg';
+import IconButton from 'components/IconButton';
+import { ReactComponent as AddIcon } from 'icons/add.svg';
 import Modal from '../Modal'
 
 const Text = styled.p`
