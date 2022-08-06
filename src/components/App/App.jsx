@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { HiArchive, HiArrowCircleUp, HiBriefcase } from 'react-icons/hi';
-import { Button } from 'components/Button';
-import { Box } from 'components/Box';
-import { AppBar } from '../AppBar';
+import  Button  from 'components/Button';
+import  Box  from 'components/Box';
+import  AppBar  from '../AppBar';
 
 import { Component } from 'react';
 import { Audio } from 'react-loader-spinner';
@@ -34,40 +34,7 @@ class App extends Component {
   render() {
     return (
       <Box position="relative" as="main">
-        <IconButton onClick={this.toggleModal} aria-label="Р”РѕР±Р°РІРёС‚СЊ todo">
-          <AddIcon width="40" height="40" fill="#fff" />
-        </IconButton>
 
-        {showModal && (
-          <Modal onClose={this.toggleModal}>
-            {/* <TodoEditor onSubmit={this.addTodo} /> */}
-          </Modal>
-        )}
-
-        <AppBar />
-        <Box display="flex" justifyContent="flex-end" mt={4} as="section">
-          <Text>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati,
-            officia!
-          </Text>
-        </Box>
-        <Audio
-          height="80"
-          width="80"
-          radius="9"
-          color="green"
-          ariaLabel="three-dots-loading"
-          wrapperStyle
-          wrapperClass
-        />
-        <Box as="section" mt={6}>
-          <Button icon={HiArchive}>Search</Button>
-          <Button icon={HiArrowCircleUp}>Filter</Button>
-          <Button icon={HiBriefcase} type="submit">
-            LogIn
-          </Button>
-          <Button type="submit">LogIn</Button>
-        </Box>
       </Box>
 );
   }
