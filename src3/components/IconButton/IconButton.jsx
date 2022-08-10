@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './IconButton.scss';
+import { IconButtonStyled } from './IconButton.styled'; 
+
 
 const IconButton = ({ children, onClick, ...allyProps }) => (
-  <button type="button" className="IconButton" onClick={onClick} {...allyProps}>
+  <IconButtonStyled type="button" onClick={onClick} {...allyProps}>
     {children}
-  </button>
+  </IconButtonStyled>
 );
 
 IconButton.defaultProps = {
