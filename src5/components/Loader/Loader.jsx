@@ -6,7 +6,9 @@ import { LoaderBackdrop, LoaderContent } from './Loader.styled';
 const modalRoot = document.querySelector('#loader-root');
 
 export default class Loader extends Component {
-
+  componentDidMount() {
+    this.props.disabledLoader();
+  }
 
   render() {
     return createPortal(

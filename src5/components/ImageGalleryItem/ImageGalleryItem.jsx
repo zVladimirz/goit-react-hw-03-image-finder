@@ -4,7 +4,7 @@ import {
   ImageGalleryItemImage,
 } from './ImageGalleryItem.styled';
 
-const ImageGalleryItem = ({ imageUrl, tags, modalImage, modalToggle }) => {
+const ImageGalleryItem = ({ key, imageUrl, tags, modalImage, modalToggle }) => {
   return (
     <>
       <ImageGalleryItemStyled onClick={() => modalToggle(modalImage, tags)}>
@@ -18,11 +18,10 @@ const ImageGalleryItem = ({ imageUrl, tags, modalImage, modalToggle }) => {
 };
 
 ImageGalleryItem.propTypes = {
-
-  imageUrl: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
-  modalImage: PropTypes.string.isRequired,
-  modalToggle: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ImageGalleryItem;

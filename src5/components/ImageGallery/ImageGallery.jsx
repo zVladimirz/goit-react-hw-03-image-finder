@@ -3,6 +3,7 @@ import { ImageGalleryStyled } from './ImageGallery.styled';
 import ImageGalleryItem from 'components/ImageGalleryItem';
 
 const ImageGallery = ({ images, toggleModal }) => {
+  console.log(images);
   return (
     <ImageGalleryStyled>
       {images.map(image => {
@@ -32,7 +33,5 @@ ImageGallery.propTypes = {
 
   toggleModal: PropTypes.func.isRequired,
 };
-
-
 
 export default ImageGallery;

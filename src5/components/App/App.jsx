@@ -6,13 +6,21 @@ import Searchbar from 'components/Searchbar';
 import Button from 'components/Button';
 import ImageGallery from 'components/ImageGallery';
 
+// const Text = styled.p`
+//   color: ${p => p.theme.colors.accent};
+//   font-family: ${p => p.theme.fonts.body};
+//   font-size: ${p => p.theme.fontSizes.l};
+//   padding-top: ${p => p.theme.space[4]}px;
+//   padding-bottom: ${p => p.theme.space[3]}px;
+// `;
+
 const axios = require('axios');
 
 class App extends Component {
   state = {
     showModal: false,
     showLoader: false,
-    searchQuery: '',
+    searchQuery: 'dogs',
     currentPage: 1,
     totalPage: 1,
     BASE_URL: 'https://pixabay.com/api',
@@ -34,6 +42,7 @@ class App extends Component {
   }
 
   handlePageNext = () => {
+    console.log(this.state.currentPage);
     this.setState(prevState => ({
       currentPage: prevState.currentPage + 1,
     }));
@@ -41,24 +50,30 @@ class App extends Component {
 
   handleSubmit = ({ searchQueryForm }, { resetForm }) => {
     if (searchQueryForm !== '' && searchQueryForm !== this.state.searchQuery) {
+      console.log(this.state.searchQuer);
       this.setState({ searchQuery: searchQueryForm, currentPage: 1 });
     }
     // resetForm();
   };
   toggleModal = (image, tags) => {
+    if (!this.state.showModal) {
+      this.enebleLoader();
+    }
     this.setState(({ showModal }) => ({
       showModal: !showModal,
+      modalImage: image,
+      modalTags: tags,
     }));
-    this.setState({ modalImage: image, modalTags: tags });
   };
+
 
   async fetchImages() {
     this.setState({ showLoader: true });
     const { searchQuery, currentPage, BASE_URL, API_KEY, pageItem } =
       this.state;
-
+    const url = `${BASE_URL}/?key=${API_KEY}&q=${searchQuery}&image_type=photo&per_page=${pageItem}&page=${currentPage}`;
+    console.log(url);
     try {
-      const url = `${BASE_URL}/?key=${API_KEY}&q=${searchQuery}&image_type=photo&per_page=${pageItem}&page=${currentPage}`;
       const resp = await axios.get(url);
 
       if (currentPage === 1) {
@@ -78,7 +93,10 @@ class App extends Component {
       } else {
         this.setState({ images: [] });
       }
+
+
     } catch (err) {
+
       console.error('axiosget error');
     } finally {
       this.setState({ showLoader: false });
@@ -95,14 +113,15 @@ class App extends Component {
       currentPage,
       totalPage,
     } = this.state;
-console.log(images.length );
+    console.log(currentPage, totalPage);
     return (
       <Box position="relative" as="main">
         <Searchbar onSubmit={this.handleSubmit} />
 
+
         {images.length > 0 && (
           <ImageGallery
-            images={images}
+            images={this.state.images}
             toggleModal={this.toggleModal}
           ></ImageGallery>
         )}
@@ -118,7 +137,8 @@ console.log(images.length );
             <img src={modalImage} alt={modalTags} />
           </Modal>
         )}
-        {showLoader && <Loader />}
+        {showLoader && <Loader disabledLoader={this.disabledLoader} />}
+
       </Box>
     );
   }
