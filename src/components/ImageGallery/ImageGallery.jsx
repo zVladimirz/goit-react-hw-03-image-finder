@@ -33,6 +33,4 @@ ImageGallery.propTypes = {
   toggleModal: PropTypes.func.isRequired,
 };
 
-
-
 export default ImageGallery;

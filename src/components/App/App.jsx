@@ -67,13 +67,23 @@ class App extends Component {
           totalPage: Math.ceil(resp.data.totalHits / this.state.pageItem),
         });
       }
+      const imagehttp = resp.data.hits.map(
+        ({ id, largeImageURL, webformatURL, tags }) => {
+          return {
+            id,
+            largeImageURL,
+            webformatURL,
+            tags,
+          };
+        }
+      );
 
       if (resp.data.totalHits !== 0) {
         this.setState(prevState => ({
           images:
             this.state.currentPage > 1
-              ? [...prevState.images, ...resp.data.hits]
-              : resp.data.hits,
+              ? [...prevState.images, ...imagehttp]
+              : [...imagehttp],
         }));
       } else {
         this.setState({ images: [] });
@@ -95,7 +105,6 @@ class App extends Component {
       currentPage,
       totalPage,
     } = this.state;
-console.log(images.length );
     return (
       <Box position="relative" as="main">
         <Searchbar onSubmit={this.handleSubmit} />
